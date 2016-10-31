@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace的名字必须保证唯一，保证唯一的方法是：包名+文件名 -->
+<mapper namespace="com.wushengde.mybatis.test.userMapper">
+	<!-- 
+		根据ID查询得到一个user对象。
+	 -->
+	 <!-- parameterType:参数类型      resultType:返回结果类型 -->
+<select id="getUser" parameterType="int" resultType="com.wushengde.mybatis.test.User">
+	select * from users where id=#{id}
+</select>
+</mapper>

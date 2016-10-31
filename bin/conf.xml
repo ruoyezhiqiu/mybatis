@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 
+	default有两个值：
+		development:开发模式
+		work:工作模式
+ -->
+<environments default="development">
+<environment id="development">
+<transactionManager type="JDBC" />
+<!-- dataSource：数据库连接池，此处可以配置多个数据库连接池 -->
+<dataSource type="POOLED">
+<property name="driver" value="com.mysql.jdbc.Driver" />
+<property name="url" value="jdbc:mysql://localhost:3306/mybatis" />
+<property name="username" value="root" />
+<property name="password" value="123456" />
+</dataSource>
+</environment>
+</environments>
+<!-- 
+	注册sql映射,每一个sql映射如果要执行都需要先注册，才能使用
+	
+-->
+<mappers>
+	<mapper resource="com/wushengde/mybatis/test/userMapper.xml"/>
+</mappers>
+</configuration>

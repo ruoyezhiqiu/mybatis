@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 该userMapper文件属于Mybatis的第一个sql语句写入方式：XML方式写入；第二种是注解方式 -->
+<!-- namespace的名字必须保证唯一，保证唯一的方法是：包名+文件名 -->
+<mapper namespace="com.wushengde.mybatis.test2.userMapper">
+	<!-- 
+		CRUD操作：增、删、改、查
+	 -->
+<!-- 向数据库中插入一条用户数据 -->
+<insert id="addUser" parameterType="com.wushengde.mybatis.test.User">
+	<!-- 此处的占位符中的字段必须是User对象的属性：此处用到了反射机制  -->
+	insert into users(name,age) values(#{name},#{age})
+</insert>
+<!-- 删除数据库中的一条数据 -->
+<delete id="deleteUser" parameterType="int">
+	delete from users where id=#{id}
+</delete>
+<!-- 修改数据库中的一条记录 -->
+<update id="updateUser" parameterType="com.wushengde.mybatis.test.User">
+	update users set  name=#{name},age=#{age} where id=#{id}
+</update>
+
+<!-- 查询表中的所有用户 -->
+<select id="getAllUsers" resultType="com.wushengde.mybatis.test.User">
+	select *from users
+</select>
+
+<!-- parameterType:参数类型      resultType:返回结果类型 -->
+<!-- 根据ID查询对应的人  其中：#{} 表示一个占位符 -->	 
+<select id="getUser" parameterType="int" resultType="com.wushengde.mybatis.test.User">
+	<!-- 此处的占位符中的字段可以随便取名 -->
+	select * from users where id=#{id}
+</select>
+</mapper>

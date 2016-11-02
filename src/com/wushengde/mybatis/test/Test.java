@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class Test {
 	public static void main(String[] args) throws IOException {
+		//为了代码简洁,将生成SessionFactory的方法封装到工具包中(此处就不调用封装的工具了）
 		 String resource = "conf.xml";
 		 //加载mybatis 的配置文件（它也加载关联的映射文件）
 		 InputStream isInputStream=Test.class.getClassLoader().getResourceAsStream(resource);
